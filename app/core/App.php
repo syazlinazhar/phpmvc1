@@ -24,8 +24,13 @@ class App{
 				$this->method = $url[1];
 				unset($url[1]);
 			}
+	}
+	//params
+		if( !empty($url) ) {
+			$this->params = array_values($url);
+		}
 }
-}
+
 	public function parseURL()
 	{
 		if( isset($_GET['url']) ) {
