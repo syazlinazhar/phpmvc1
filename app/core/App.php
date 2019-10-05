@@ -2,7 +2,8 @@
 
 class App{
 	protected $controller = 'Home';
-	
+	protected $method = 'index';
+
 	public function __construct()
 	{
 		$url = $this->parseURL();
