@@ -9,11 +9,14 @@ class App{
 	{
 		$url = $this->parseURL();
 		
+		//controller
 		if( file_exists('../app/controllers/' . $url[0] . '.php') ) {
 			$this->controller = $url[0];
 			unset($url[0]);
 			var_dump($url);
 	}
+
+	require_once '../app/controllers/' . $this->controller . '.php';
 }
 
 	public function parseURL()
