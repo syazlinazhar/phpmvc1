@@ -1,6 +1,9 @@
 <?php
 
 class App{
+	protected $controller = 'Home';
+
+	
 	public function __construct()
 	{
 		$url = $this->parseURL();
