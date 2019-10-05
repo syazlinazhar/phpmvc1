@@ -2,7 +2,6 @@
 
 class App{
 	protected $controller = 'Home';
-
 	
 	public function __construct()
 	{
