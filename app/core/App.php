@@ -10,7 +10,7 @@ class App{
 	public function parseURL()
 	{
 		if( isset($_GET['url']) ) {
-			$url = $_GET['url'];
+			$url = rtrim($_GET['url'], '/');
 			return $url;
 		}
 	}
