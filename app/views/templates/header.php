@@ -2,6 +2,6 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Home Page</title>
+	<title><?= $data['title']; ?> Page</title>
 </head>
 <body>
