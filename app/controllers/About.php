@@ -4,9 +4,12 @@ class About extends Controller {
 
 	public function index($name = 'Alin', $as = 'Student', $age = 22)
 	{
-		$this->view('about/index');
+		$data['name'] = $name;
+		$data['as'] = $as;
+		$data['age'] = $age;
+		$this->view('about/index', $data);
 	}
-	
+
 	public function page()
 	{
 		$this->view('about/page');
