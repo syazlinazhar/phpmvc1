@@ -1,22 +1,20 @@
 <?php 
 
-class Mahasiswa_model {
-	private $dbh; // database handler
-	private $stmt; // private statement to keep query 
+class Mahasiswa_model { 
+	private $table = 'mahasiswa';
+	private $db; 
 
 	public function __construct()
 	{
-		// data source name
-		$dsn = 'mysql:host=localhost;dbname=phpmvc1';
-		
-		try {
-			$this->dbh = new PDO($dsn, 'root', '');
-		} catch(PDOException $e) {
-			die($e->getMessahe());
-		}
-
+		$this->db = new Database; 
 	}
 
+	public function getAllMahasiswa()
+	{
+		$this->db->query('SELECT * FROM' . $this->table);
+		return $this->db->resultSet(); 
+	}
+}
 
 	// data using array
 	// private $mhs = [
@@ -40,10 +38,10 @@ class Mahasiswa_model {
 	// 	]
 	// ];
 
-	public function getAllMahasiswa()
-	{
-		$this->stmt = $this->dbh->prepare('SELECT * FROM mahasiswa');
-		$this->stmt->execute();
-		return $this->stmt->fetchAll(PDO::FETCH_ASSOC); 
-	}
-}
+// 	public function getAllMahasiswa()
+// 	{
+// 		$this->stmt = $this->dbh->prepare('SELECT * FROM mahasiswa');
+// 		$this->stmt->execute();
+// 		return $this->stmt->fetchAll(PDO::FETCH_ASSOC); 
+// 	}
+// }
