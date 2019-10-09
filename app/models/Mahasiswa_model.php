@@ -14,6 +14,13 @@ class Mahasiswa_model {
 		$this->db->query(' SELECT * FROM ' . $this->table);
 		return $this->db->resultSet(); 
 	}
+
+	public function getMahasiswaByMatric($matric)
+	{
+		$this->db->query(' SELECT * FROM ' . $this->table . ' WHERE matric=:matric ');
+		$this->db->bind('matric', $matric);
+		return $this->db->single();
+	}
 }
 
 	// data using array
