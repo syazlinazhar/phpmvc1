@@ -15,11 +15,27 @@ class Mahasiswa_model {
 		return $this->db->resultSet(); 
 	}
 
-	public function getMahasiswaByMatric($matric)
+	public function getMahasiswaById($id)
 	{
-		$this->db->query(' SELECT * FROM ' . $this->table . ' WHERE matric=:matric ');
-		$this->db->bind('matric', $matric);
+		$this->db->query(' SELECT * FROM ' . $this->table . ' WHERE id=:id ');
+		$this->db->bind('id', $id);
 		return $this->db->single();
+	}
+
+	public function addDataMahasiswa($data)
+	{
+		$query = "INSERT INTO mahasiswa
+					VALUES
+					('', :name, :matric, :email, :course)";
+		$this->db->query($query);
+		$this->db->bind('name', $data['name']);
+		$this->db->bind('matric', $data['matric']);
+		$this->db->bind('email', $data['email']);
+		$this->db->bind('course', $data['course']);
+
+		$this->db->execute();
+
+		return $this->db->rowCount();
 	}
 }
 

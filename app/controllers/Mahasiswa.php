@@ -10,13 +10,21 @@ class Mahasiswa extends Controller{
 		$this->view('templates/footer');
 	} 
 
-	public function detail($matric)
+	public function detail($id)
 	{
 		$data['title'] = 'Details Mahasiswa'; 
-		$data['mhs'] = $this->model('Mahasiswa_model')->getMahasiswaByMatric($matric);
+		$data['mhs'] = $this->model('Mahasiswa_model')->getMahasiswaById($id);
 		$this->view('templates/header', $data); 
 		$this->view('mahasiswa/detail', $data);
 		$this->view('templates/footer');
 	} 
+
+	public function add()
+	{
+		if( $this->model('Mahasiswa_model')->AddDataMahasiswa($_POST) > 0 ) {
+			header('Location: ' . BASEURL . '/mahasiswa');
+			exit;
+		}
+	}
 }
 
