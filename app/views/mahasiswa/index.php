@@ -8,7 +8,7 @@
 
 	<div class="row">
 		<div class="col-lg-6">
-			<button type="button" class="btn btn-primary" data-toggle="modal" 
+			<button type="button" class="btn btn-primary buttonAddData" data-toggle="modal" 
 			data-target="#formModal">
 				Add Data Mahasiswa
 			</button>
@@ -20,6 +20,9 @@
   					<?= $mhs['name']; ?>
 					<a href="<?= BASEURL; ?>/mahasiswa/delete/<?= $mhs['id']; ?>" 
 					  class="badge badge-danger  float-right ml-1" onclick="return confirm('confirm?');">delete</a>
+					<a href="<?= BASEURL; ?>/mahasiswa/edit/<?= $mhs['id']; ?>" 
+					  class="badge badge-success  float-right ml-1 displayModalEdit" 
+					  data-toggle="modal" data-target="#formModal">edit</a>
 					<a href="<?= BASEURL; ?>/mahasiswa/detail/<?= $mhs['id']; ?>" 
 					  class="badge badge-primary  float-right ml-1">details</a>
   					</li>
