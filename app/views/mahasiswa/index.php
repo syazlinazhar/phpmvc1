@@ -6,13 +6,29 @@
 	</div>
 </div>
 
-	<div class="row">
-		<div class="col-lg-6">
-			<button type="button" class="btn btn-primary buttonAddData" data-toggle="modal" 
+<div class="row mb-3">
+	<div class="col-lg-6">
+	<button type="button" class="btn btn-primary buttonAddData" data-toggle="modal" 
 			data-target="#formModal">
 				Add Data Mahasiswa
-			</button>
-			<br><br>
+	</div>
+</div>
+
+		<div class="row mb-3">
+		<div class="col-lg-6">
+			<form action="<?= BASEURL; ?>/mahasiswa/find" method="post">
+				<div class="input-group">
+			<input type="text" class="form-control" placeholder="find mahasiswa.." name="keyword" id="keyword" autocomplete="off">
+			<div class="input-group-append">
+			<button class="btn btn-primary" type="submit" id="buttonFind">Find</button>
+  </div>
+</div>
+			</form>
+			</div>
+		</div>
+
+			<div class="row">
+			<div class="col-lg-6">
 			<h3>Register Mahasiswa</h3>
 			<ul class="list-group">
 				<?php foreach( $data['mhs'] as $mhs ) : ?>
@@ -22,7 +38,7 @@
 					  class="badge badge-danger  float-right ml-1" onclick="return confirm('confirm?');">delete</a>
 					<a href="<?= BASEURL; ?>/mahasiswa/edit/<?= $mhs['id']; ?>" 
 					  class="badge badge-success  float-right ml-1 displayModalEdit" 
-					  data-toggle="modal" data-target="#formModal">edit</a>
+					  data-toggle="modal" data-target="#formModal" data-id="<?= $mhs['id']; ?>">edit</a>
 					<a href="<?= BASEURL; ?>/mahasiswa/detail/<?= $mhs['id']; ?>" 
 					  class="badge badge-primary  float-right ml-1">details</a>
   					</li>
@@ -47,6 +63,7 @@ aria-labelledby="titleModal" aria-hidden="true">
       <div class="modal-body">
         
 		<form action="<?= BASEURL; ?>/mahasiswa/add" method="post">
+		<input type="hidden" name="id" id="id">
 		<div class="form-group">
 			<label for="name">Name</label>
 			<input type="text" class="form-control" id="name" name="name">

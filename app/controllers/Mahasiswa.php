@@ -44,5 +44,33 @@ class Mahasiswa extends Controller{
 			exit;
 		}
 	}
+
+	public function getEdit()
+	{
+		echo json_encode($this->model('Mahasiswa_model')->getMahasiswaById($_POST['id']));
+	}
+
+	public function edit()
+	{
+		if( $this->model('Mahasiswa_model')->editDataMahasiswa($_POST) > 0 ) {
+			Flasher::setFlash('successfully', 'edited', 'success');
+			header('Location: ' . BASEURL . '/mahasiswa');
+			exit;
+		} else {
+			Flasher::setFlash('failed', 'edited', 'danger');
+			header('Location: ' . BASEURL . '/mahasiswa');
+			exit;
+		}	
+	}
+
+	public function find()
+	{
+		$data['title'] = 'Register Mahasiswa'; 
+		$data['mhs'] = $this->model('Mahasiswa_model')->findDataMahasiswa();
+		$this->view('templates/header', $data); 
+		$this->view('mahasiswa/index', $data);
+		$this->view('templates/footer');
+	}
+
 }
 

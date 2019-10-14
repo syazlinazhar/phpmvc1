@@ -48,6 +48,36 @@ class Mahasiswa_model {
 
 		return $this->db->rowCount();
 	}
+
+	public function editDataMahasiswa($data)
+	{
+		$query = "UPDATE mahasiswa SET
+					name = :name,
+					matric = :matric,
+					email = :email,
+					course = :course
+				  WHERE id = :id";
+					
+		$this->db->query($query);
+		$this->db->bind('name', $data['name']);
+		$this->db->bind('matric', $data['matric']);
+		$this->db->bind('email', $data['email']);
+		$this->db->bind('course', $data['course']);
+		$this->db->bind('id', $data['id']);
+
+		$this->db->execute();
+
+		return $this->db->rowCount();
+	}
+
+	public function findDataMahasiswa()
+	{
+		$keyword = $_POST['keyword'];
+		$query = "SELECT * FROM mahasiswa WHERE name LIKE :keyword";
+		$this->db->query($query);
+		$this->db->bind('keyword', "%$keyword%");
+		return $this->db->resultSet(); 
+	}
 }
 
 	// data using array
